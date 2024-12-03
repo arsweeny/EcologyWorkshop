@@ -85,6 +85,10 @@ ggplot(posterior_data, aes(x = Value, fill = Type)) +
 Twin + ggsave('Figures/SignifPosterior.png', units ="mm", 
               height = 180, width = 180)
 
+Comp + ggsave('Figures/CompPosteriors.png', units ="mm", 
+              height = 180, width = 210)
+
+
 ### now let's add a grouping variable 
 
 # Number of posterior samples
@@ -131,12 +135,16 @@ ggplot(posterior_data, aes(x = Value, fill = Type)) +
     y = "Density",
     fill = "Effect Type"
   ) +
-  theme_minimal() +
-  theme(legend.position = "none") +
+  theme_minimal(base_size = 20) +
+  #theme(legend.position = "none") +
   scale_fill_manual(values = pal[c(2,1,3)], labels= c("Twin Status", "Female - Calved",
                                                    "Female - No Calf")) + 
   scale_colour_manual(values = pal[c(2,1,3)], 
                       labels= c("Twin Status", "Female - Calved",
-                                "Female - No Calf"), guide = "none")
+                                "Female - No Calf"), guide = "none") -> GroupComp 
+
+GroupComp + ggsave('Figures/GroupCompPosteriors.png', units ="mm", 
+              height = 180, width = 215)
+
 
 
